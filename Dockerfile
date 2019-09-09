@@ -8,7 +8,7 @@ WORKDIR /app
 
 # Install python
 RUN apt-get update && \
-    apt-get -y --no-install-recommends install python3.7 python-pip python-setuptools
+    apt-get -y --no-install-recommends install python3 python-pip python-setuptools
 
 ENV PYTHONPATH $PYTHONPATH:/app/usage_report:/app/tests
 
