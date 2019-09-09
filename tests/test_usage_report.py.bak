@@ -26,14 +26,14 @@ def spark():
 
 @pytest.fixture
 def main_summary_data():
-    a1 = [Row(addon_id='disableSHA1rollout', name='SHA-1 deprecation staged rollout',
+    a1 = [Row(addon_id=u'disableSHA1rollout', name=u'SHA-1 deprecation staged rollout',
               foreign_install=False, is_system=False),
-          Row(addon_id='e10srollout@mozilla.org', name='Multi-process staged rollout',
+          Row(addon_id=u'e10srollout@mozilla.org', name=u'Multi-process staged rollout',
               foreign_install=False, is_system=True)]
 
-    a2 = [Row(addon_id='disableSHA1rollout', name='SHA-1 deprecation staged rollout',
+    a2 = [Row(addon_id=u'disableSHA1rollout', name=u'SHA-1 deprecation staged rollout',
               foreign_install=False, is_system=False),
-          Row(addon_id='e10srollout@mozilla.org', name='Multi-process staged rollout',
+          Row(addon_id=u'e10srollout@mozilla.org', name=u'Multi-process staged rollout',
               foreign_install=False, is_system=True)]
 
     return (
@@ -341,8 +341,8 @@ def test_top_10_addons_no_country_list(spark, main_summary_data):
         {
             "country": "All",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         }
     ]
@@ -359,15 +359,15 @@ def test_top_10_addons_country_list(spark, main_summary_data):
         {
             "country": "All",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         },
         {
             "country": "DE",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         }
     ]
@@ -541,8 +541,8 @@ def test_integration_no_country_list(spark, main_summary_data):
         {
             "country": "All",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         }
     ]
@@ -616,15 +616,15 @@ def test_integration_country_list(spark, main_summary_data):
         {
             "country": "All",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         },
         {
             "country": "DE",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         }
     ]

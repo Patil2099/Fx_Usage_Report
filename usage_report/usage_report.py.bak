@@ -2,18 +2,18 @@ import click
 import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
-from .utils.activeuser import getMAU, getYAU
-from .utils.avg_daily_usage import get_daily_avg_session
-from .utils.avg_intensity import get_avg_intensity
-from .utils.helpers import load_main_summary
-from .utils.localedistribution import locale_on_date
-from .utils.newuser import new_users
-from .utils.pct_addon import get_addon
-from .utils.pct_latest_version import pct_new_version
-from .utils.process_output import all_metrics_per_day, rename_keys, update_history
-from .utils.s3_utils import read_from_s3, write_to_s3
-from .utils.top10addons import top_10_addons_on_date
-from .utils.trackingprotection import pct_tracking_protection
+from utils.activeuser import getMAU, getYAU
+from utils.avg_daily_usage import get_daily_avg_session
+from utils.avg_intensity import get_avg_intensity
+from utils.helpers import load_main_summary
+from utils.localedistribution import locale_on_date
+from utils.newuser import new_users
+from utils.pct_addon import get_addon
+from utils.pct_latest_version import pct_new_version
+from utils.process_output import all_metrics_per_day, rename_keys, update_history
+from utils.s3_utils import read_from_s3, write_to_s3
+from utils.top10addons import top_10_addons_on_date
+from utils.trackingprotection import pct_tracking_protection
 
 # country names and mappings
 # this list is formulated from
@@ -174,7 +174,7 @@ def main(date, lag_days, sample, no_output, input_bucket, input_prefix, input_ve
     top10addon.printSchema()
     top10addon_df = top10addon.toPandas()
 
-    print("Converting data to JSON")
+    print "Converting data to JSON"
     fxhealth, webusage = all_metrics_per_day(TOP_TEN_COUNTRIES,
                                              usage_df,
                                              locales_df,
@@ -183,8 +183,8 @@ def main(date, lag_days, sample, no_output, input_bucket, input_prefix, input_ve
     # rename countries for presentation
     fxhealth = rename_keys(fxhealth, COUNTRY_NAME_MAPPINGS)
     webusage = rename_keys(webusage, COUNTRY_NAME_MAPPINGS)
-    print(fxhealth)
-    print(webusage)
+    print fxhealth
+    print webusage
 
     # get previous data
     s3_key_prefix = output_prefix + '/' + output_version + '/{}/'
@@ -199,14 +199,14 @@ def main(date, lag_days, sample, no_output, input_bucket, input_prefix, input_ve
     webusage_data_full = update_history(webusage, old_webusage)
 
     if no_output:
-        print("no output generated due to user request")
+        print "no output generated due to user request"
     else:
-        print("Writing new data to:", output_bucket)
-        print(s3_key_fxhealth.format(MASTER_VERSION))
-        print(s3_key_webusage.format(MASTER_VERSION))
-        print("Writing old data to:", output_bucket)
-        print(s3_key_fxhealth.format(date))
-        print(s3_key_webusage.format(date))
+        print "Writing new data to:", output_bucket
+        print s3_key_fxhealth.format(MASTER_VERSION)
+        print s3_key_webusage.format(MASTER_VERSION)
+        print "Writing old data to:", output_bucket
+        print s3_key_fxhealth.format(date)
+        print s3_key_webusage.format(date)
 
         # write historical data, indexed by date
         write_to_s3(output_bucket, s3_key_fxhealth.format(date), old_fxhealth)

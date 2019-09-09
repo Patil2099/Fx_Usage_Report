@@ -13,10 +13,10 @@ def is_same(spark, df, expected, verbose=False):
     df_len, expected_len, actual_len = df.count(), expected_df.count(), intersection.count()
 
     if verbose:
-        print("\nInput Dataframe\n")
-        print(df.select(*cols).collect())
-        print("\nExpected Dataframe\n")
-        print(expected_df.collect())
+        print "\nInput Dataframe\n"
+        print df.select(*cols).collect()
+        print "\nExpected Dataframe\n"
+        print expected_df.collect()
 
     assert df_len == expected_len
     assert actual_len == expected_len, "Missing {} Rows".format(expected_len - actual_len)

@@ -2,7 +2,7 @@ import pyspark.sql.functions as F
 from pyspark.sql.functions import lit, col, desc
 from pyspark.sql import Window
 import json
-from .helpers import date_plus_x_days, keep_countries_and_all
+from helpers import date_plus_x_days, keep_countries_and_all
 
 
 def get_test_pilot_addons():

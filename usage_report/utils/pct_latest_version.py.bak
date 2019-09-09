@@ -1,10 +1,10 @@
 import datetime
 import json
-import urllib.request, urllib.parse, urllib.error
+import urllib
 
 from pyspark.sql.functions import split
 import pyspark.sql.functions as F
-from .helpers import date_plus_x_days, keep_countries_and_all
+from helpers import date_plus_x_days, keep_countries_and_all
 
 RELEASE_VERSIONS_URL = "https://product-details.mozilla.org/1.0/firefox_history_major_releases.json"
 
@@ -17,10 +17,10 @@ def get_latest_version(date, url):
         Return: release major version for that date (50, not 50.0)
     """
     date = datetime.datetime.strptime(date, '%Y%m%d').strftime('%Y-%m-%d')
-    response = urllib.request.urlopen(url)
+    response = urllib.urlopen(url)
     jrelease = json.loads(response.read())
-    jrelease = dict((v, k) for k, v in jrelease.items())
-    last_update = max([release_date for release_date in list(jrelease.keys()) if release_date <= date])
+    jrelease = dict((v, k) for k, v in jrelease.iteritems())
+    last_update = max([release_date for release_date in jrelease.keys() if release_date <= date])
     return jrelease[last_update].split('.')[0]
 
 

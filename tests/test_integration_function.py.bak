@@ -22,9 +22,9 @@ def main_summary_data_multiple():
           - clients with only pings from outside date range
           - clients with some pings from outside date range
     '''
-    a1 = [Row(addon_id='disableSHA1rollout', name='SHA-1 deprecation staged rollout',
+    a1 = [Row(addon_id=u'disableSHA1rollout', name=u'SHA-1 deprecation staged rollout',
               foreign_install=False, is_system=False),
-          Row(addon_id='e10srollout@mozilla.org', name='Multi-process staged rollout',
+          Row(addon_id=u'e10srollout@mozilla.org', name=u'Multi-process staged rollout',
               foreign_install=False, is_system=True)]
 
     return (
@@ -59,9 +59,9 @@ def main_summary_data_null_value():
           - 'active_ticks' has zero
           - 'client2' has multiple fields missing
     '''
-    a1 = [Row(addon_id='disableSHA1rollout', name='SHA-1 deprecation staged rollout',
+    a1 = [Row(addon_id=u'disableSHA1rollout', name=u'SHA-1 deprecation staged rollout',
               foreign_install=False, is_system=False),
-          Row(addon_id='e10srollout@mozilla.org', name='Multi-process staged rollout',
+          Row(addon_id=u'e10srollout@mozilla.org', name=u'Multi-process staged rollout',
               foreign_install=False, is_system=True)]
 
     return (
@@ -129,8 +129,8 @@ def test_integration_multiple_countries_and_days_no_country_list(spark, main_sum
         {
             "country": "All",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         }
     ]
@@ -212,15 +212,15 @@ def test_integration_multiple_countries_and_days_country_list(spark, main_summar
         {
             "country": "All",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         },
         {
             "country": "DE",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         }
     ]
@@ -272,8 +272,8 @@ def test_integration_missing_fields_no_country_list(spark, main_summary_data_nul
         {
             "country": "All",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         }
     ]
@@ -349,15 +349,15 @@ def test_integration_missing_fields_country_list(spark, main_summary_data_null_v
         {
             "country": "All",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         },
         {
             "country": "DE",
             "submission_date_s3": "20180201",
-            "addon_id": 'disableSHA1rollout',
-            "addon_name": 'SHA-1 deprecation staged rollout',
+            "addon_id": u'disableSHA1rollout',
+            "addon_name": u'SHA-1 deprecation staged rollout',
             "pct_with_addon": 100.0
         }
     ]
