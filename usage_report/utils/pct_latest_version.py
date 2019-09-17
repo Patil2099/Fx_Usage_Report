@@ -20,7 +20,7 @@ def get_latest_version(date, url):
     response = urllib.request.urlopen(url)
     jrelease = json.loads(response.read())
     jrelease = dict((v, k) for k, v in jrelease.items())
-    last_update = max([release_date for release_date in list(jrelease.keys()) if release_date <= date])
+    last_update = max([release_date for release_date in jrelease.keys() if release_date <= date])
     return jrelease[last_update].split('.')[0]
 
 

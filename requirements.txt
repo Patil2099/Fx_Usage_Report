@@ -8,3 +8,4 @@ pandas==0.24.2
 pyspark==2.2.2
 pytest==4.6.4
 scipy==1.0.0rc1
+request

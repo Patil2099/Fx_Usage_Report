@@ -198,14 +198,14 @@ def update_history(day_dict, history_dict=None):
     """
     if history_dict is None:
         history_dict = {}
-        for country in list(day_dict.keys()):
+        for country in day_dict.keys():
             history_dict[country] = [day_dict[country]]
     history_dict = history_dict.copy()
     check_dict_keys(history_dict,
                     day_dict,
                     "warning: countries don't match")
-    for country in list(day_dict.keys()):
-        if country in list(history_dict.keys()):
+    for country in day_dict.keys():
+        if country in history_dict.keys():
             check_dict_keys(history_dict[country][-1],
                             day_dict[country],
                             "warning: metrics don't match last entry ({})".format(country))
